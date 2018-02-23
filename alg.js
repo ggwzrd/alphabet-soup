@@ -5,6 +5,7 @@
 ** @return {boolean}
 ** BIG-O notation: O(2) + O(s-1) O(3m-1) = O(n)
 ** calculation can be found in the right of the functions
+** @NB: message (m) and the number of letters in your bowl of soup (s).
 **/
 
 
