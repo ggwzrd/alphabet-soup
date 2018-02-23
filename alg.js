@@ -3,7 +3,7 @@
 ** @param {string} message
 ** @param {array} letters
 ** @return {boolean}
-** BIG-O notation: O(2) + O(s+3m-2) = O(n)
+** BIG-O notation: O(2) + O(s-1) O(3m-1) = O(n)
 ** calculation can be found in the right of the functions
 **/
 
@@ -16,11 +16,11 @@ var canICreateTheMessage = function(message, letters) {
     // lower case the message to avoid errors during comparison
     .toLowerCase() //                                                           O(m) +
 
-  return searchBowl(neededLetters, letters) //                                  O(s+m-2)
-};                                    //                                        = O(2) + O(s+3m-2)
+  return searchBowl(neededLetters, letters) //                                  O(s-1) + O(m-1)
+};                                    //                                        = O(2) + O(s-1) + O(3m-1)
 
 // using recursion to search in the bowl
-// Big-O: O(s+m-2) = O(n)
+// Big-O: O(s-1) + O(m-1) = O(n)
 var searchBowl = function(needed, bowl) {
   if (needed.length === 0) return true;        //                               O(1) +
 
@@ -30,11 +30,11 @@ var searchBowl = function(needed, bowl) {
     bowl.splice(index, 1);                     //                               O(s) +
     var remaining = needed.substr(1)           //                               O(1) + O(m) +
     // recalling the function by removing the already checked letters
-    return searchBowl(remaining, bowl);        //                               O(s+m-2)
+    return searchBowl(remaining, bowl);        //                               O(s-1) + O(m-1)
   }
 
   return false;
-};                                             //                               = O(4) + O(s+m-2)
+};                                             //                               = O(4) + O(s-1) + O(m-1)
 
 var message   = "ciao bella";
 // var alphaBowl = [ 'a', 'w', 'n', 'k', 'l', 'o', 'r', 'u', 'n', 't', 'l', 's', 'c', 'h', 'a',]; // false
